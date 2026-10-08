@@ -12,3 +12,8 @@ print(course.rstrip())
 #replace text
 text = "Python is a popular programming language."
 print(text.replace("Python", "Java"))
+
+data = "john,25,Huye"
+array_data = data.split(",")
+print(array_data)
+
