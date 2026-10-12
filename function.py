@@ -16,4 +16,4 @@ print(text.replace("Python", "Java"))
 data = "john,25,Huye"
 array_data = data.split(",")
 print(array_data)
-
+print(text[4:])
