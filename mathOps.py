@@ -40,3 +40,12 @@ print(greeting)
 file=open("text.txt", "w")
 file.write(greeting)
 file.close()    
+
+def multiply_all (*numbers):
+    total = 1
+    for number in numbers:
+        total *= number
+    return total 
+
+totals = multiply_all(2,3,4,5)
+print(totals)  
