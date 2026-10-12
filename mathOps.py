@@ -24,3 +24,19 @@ for number in range(3):
         break
 else:
     print("Attempted 3 times and failed")
+    count = 0
+for number in range(2,10,2):
+    print(number)
+    count += 1
+else:
+    print(f"we have {count} even numbers")
+
+def greet_user(first_name, last_name):
+    return f"Hi {first_name} {last_name}!"
+
+
+greeting= greet_user("John", "Doe")
+print(greeting)
+file=open("text.txt", "w")
+file.write(greeting)
+file.close()    
