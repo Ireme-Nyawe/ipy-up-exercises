@@ -10,4 +10,7 @@ print("Hello\0World!")
 
 first_name = "John"
 last_name = "Doe"
+
+first_name= first_name.upper()
+
 print(f"My name is {first_name} {last_name}.")
