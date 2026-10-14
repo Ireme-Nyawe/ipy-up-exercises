@@ -205,3 +205,118 @@ generator = (n ** 2 for n in range(5))
 squares = tuple(generator)
 
 print(squares)           # (0, 1, 4, 9, 16)
+
+
+
+
+# ============================================================
+# 3. SET
+# ============================================================
+
+# 3.1 Create a set
+numbers = {10, 20, 30, 20}
+
+print(numbers)            # Contains 10, 20, 30; duplicate 20 removed
+
+empty_set = set()
+print(empty_set)
+
+# Create a set from a list
+from_list = set([1, 2, 2, 3, 3, 4])
+print(from_list)          # Unique values only
+
+# 3.2 Add items
+numbers.add(40)           # Add one item
+numbers.update([50, 60])  # Add multiple items
+print(numbers)
+
+# 3.3 Remove items
+numbers.remove(20)        # Error if 20 is absent
+numbers.discard(999)      # No error if 999 is absent
+
+# pop() removes an arbitrary item
+removed_item = numbers.pop()
+print("Removed:", removed_item)
+print(numbers)
+
+# 3.4 Check membership and length
+print(30 in numbers)
+print(999 not in numbers)
+print(len(numbers))
+
+# 3.5 Set union: combine unique items
+a = {1, 2, 3, 4}
+b = {3, 4, 5, 6}
+
+print(a.union(b))
+print(a | b)              # Same operation
+
+# 3.6 Intersection: items found in both sets
+print(a.intersection(b))
+print(a & b)              # Same operation
+
+# 3.7 Difference: items in A but not in B
+print(a.difference(b))
+print(a - b)
+
+# Items in B but not in A
+print(b - a)
+
+# 3.8 Symmetric difference: items in either set, but not both
+print(a.symmetric_difference(b))
+print(a ^ b)
+
+# 3.9 Compare sets
+print({1, 2}.issubset(a))       # True
+print(a.issuperset({1, 2}))     # True
+print(a.isdisjoint({7, 8}))     # True: no shared items
+
+print({1, 2} <= a)              # Subset
+print(a >= {1, 2})              # Superset
+
+# 3.10 Update a set using operations
+x = {1, 2, 3}
+x.update({3, 4})                # Add values
+print(x)                        # {1, 2, 3, 4}
+
+x.intersection_update({2, 3, 4})
+print(x)                        # {2, 3, 4}
+
+x.difference_update({4})
+print(x)                        # {2, 3}
+
+x.symmetric_difference_update({3, 5})
+print(x)                        # {2, 5}
+
+# 3.11 Copy and clear
+copied = a.copy()
+print(copied)
+
+copied.clear()
+print(copied)                   # set()
+
+# 3.12 Loop through a set
+for item in a:
+    print(item)
+
+# Do not rely on a particular iteration order.
+
+# 3.13 Set comprehension
+squares = {n ** 2 for n in range(6)}
+print(squares)
+
+evens = {n for n in range(10) if n % 2 == 0}
+print(evens)
+
+# 3.14 Remove duplicates from a list
+names = ["Aline", "Eric", "Aline", "Diane"]
+unique_names = set(names)
+
+print(unique_names)
+
+# Convert back to a list if needed
+unique_names_list = list(unique_names)
+print(unique_names_list)
+
+
+
