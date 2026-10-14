@@ -320,3 +320,156 @@ print(unique_names_list)
 
 
 
+# ============================================================
+# 4. DICTIONARY
+# ============================================================
+
+# 4.1 Create a dictionary
+student = {
+    "name": "Aline",
+    "age": 21,
+    "course": "Python"
+}
+
+empty_dict = {}
+
+print(student)
+print(empty_dict)
+
+# Create a dictionary from pairs
+from_pairs = dict([("a", 1), ("b", 2)])
+print(from_pairs)
+
+# 4.2 Access values using keys
+print(student["name"])        # Aline
+print(student["age"])         # 21
+
+# get() avoids KeyError for a missing key
+print(student.get("name"))
+print(student.get("phone"))             # None
+print(student.get("phone", "Unknown"))  # Default value
+
+# 4.3 Add a new key-value pair
+student["city"] = "Kigali"
+student["phone"] = "0780000000"
+
+print(student)
+
+# 4.4 Update an existing value
+student["age"] = 22
+
+# Update one or more key-value pairs
+student.update({
+    "course": "Data Analytics",
+    "country": "Rwanda"
+})
+
+print(student)
+
+# 4.5 Remove items
+phone = student.pop("phone")
+print("Removed phone:", phone)
+
+last_pair = student.popitem()
+print("Removed last inserted pair:", last_pair)
+
+print(student)
+
+# Delete a particular key
+del student["city"]
+print(student)
+
+# 4.6 Check whether keys exist
+print("name" in student)          # True
+print("phone" in student)         # False
+print("phone" not in student)     # True
+
+# Important: 'in' checks keys, not values.
+print("Aline" in student)         # False
+
+# 4.7 Get the dictionary's length
+print(len(student))
+
+# 4.8 Get keys, values, and key-value pairs
+print(student.keys())
+print(student.values())
+print(student.items())
+
+# Convert dictionary views to lists
+print(list(student.keys()))
+print(list(student.values()))
+print(list(student.items()))
+
+# 4.9 Loop through keys
+for key in student:
+    print(key)
+
+# 4.10 Loop through values
+for value in student.values():
+    print(value)
+
+# 4.11 Loop through keys and values
+for key, value in student.items():
+    print(key, ":", value)
+
+# 4.12 Copy a dictionary
+copied = student.copy()
+print(copied)
+
+# 4.13 Merge dictionaries
+a = {"name": "Aline", "age": 21}
+b = {"city": "Kigali", "age": 22}
+
+# update() modifies the first dictionary
+a.update(b)
+print(a)                  # age becomes 22
+
+# | creates a new merged dictionary (Python 3.9+)
+x = {"a": 1, "b": 2}
+y = {"b": 99, "c": 3}
+
+merged = x | y
+print(merged)             # {'a': 1, 'b': 99, 'c': 3}
+print(x)                  # Original x is unchanged
+
+# 4.14 setdefault()
+data = {"name": "Aline"}
+
+data.setdefault("status", "active")
+print(data)               # Adds status
+
+data.setdefault("name", "Eric")
+print(data)               # Existing name remains Aline
+
+# 4.15 Create a dictionary from keys
+keys = ["name", "age", "city"]
+new_dict = dict.fromkeys(keys, None)
+
+print(new_dict)
+
+# 4.16 Dictionary comprehension
+squares = {n: n ** 2 for n in range(5)}
+print(squares)
+
+# Filter a dictionary using comprehension
+scores = {"Aline": 85, "Eric": 45, "Diane": 92}
+
+passed = {
+    name: score
+    for name, score in scores.items()
+    if score >= 50
+}
+
+print(passed)
+
+# 4.17 Clear all items
+temporary = {"a": 1, "b": 2}
+temporary.clear()
+
+print(temporary)          # {}
+
+# 4.18 Safely check for a missing key
+if "email" in student:
+    print(student["email"])
+else:
+    print("Email not found")
