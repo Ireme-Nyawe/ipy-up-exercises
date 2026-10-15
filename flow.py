@@ -48,3 +48,31 @@ for n in data:
         break
 else:
     print("no prime found")
+
+
+#Mini menu
+items = []
+
+while True:
+    print("\nMenu:")
+    print("1. Add item")
+    print("2. Show items")
+    print("3. Quit")
+
+    choice = input("Enter your choice (1-3): ")
+
+    if choice == "1":
+        new_item = input("Enter an item to add: ")
+        items.append(new_item)
+        print(f"{new_item} has been added.")
+    elif choice == "2":
+        if items:
+            for i, entry in enumerate(items, start=1):
+                print(f"{i}. {entry}")
+        else:
+            print("Nothing here yet")
+    elif choice == "3":
+        print("Goodbye!")
+        break
+    else:
+        print("Invalid choice, pick 1, 2, or 3.")
