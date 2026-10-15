@@ -34,3 +34,17 @@ for item in data:
         print(item)
     else:
         print("default")
+#First prime in a range
+data = [8, 9, 10, 11, 12]
+
+for n in data:
+    if n < 2:
+        continue
+    for i in range(2, n):
+        if n % i == 0:
+            break
+    else:
+        print(n, "is the first prime")
+        break
+else:
+    print("no prime found")
