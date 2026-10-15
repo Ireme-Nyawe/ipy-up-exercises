@@ -25,3 +25,12 @@ while True:
         print("Too high")
     else:
         print("Too low")
+
+#Safe default
+data = [0, "", None, 5, "Great"]
+
+for item in data:
+    if item or item == 0:
+        print(item)
+    else:
+        print("default")
