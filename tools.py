@@ -45,3 +45,41 @@ upper = [w.upper() for w in words]
 # Dict and set comprehensions
 word_lengths = {w: len(w) for w in words}
 unique_lengths = {len(w) for w in words}
+
+
+
+name = "Great"
+age = 25
+price = 1234.5678
+
+# Basic
+print(f"Hello, {name}!")
+
+# Expressions inside braces
+print(f"Next year you'll be {age + 1}")
+print(f"Name in caps: {name.upper()}")
+
+# Number formatting
+print(f"Price: {price:.2f}")        # 1234.57
+print(f"Price: {price:,.2f}")       # 1,234.57
+print(f"Percent: {0.256:.1%}")      # 25.6%
+print(f"Padded: {7:03d}")           # 007
+
+# Alignment and width
+print(f"|{name:<10}|")   # left
+print(f"|{name:>10}|")   # right
+print(f"|{name:^10}|")   # center
+
+# Debug shortcut (prints name and value)
+print(f"{age=}")         # age=25
+
+# Dict access and multiline
+user = {"name": "Great", "role": "founder"}
+print(f"{user['name']} is a {user['role']}")
+
+msg = (
+    f"Name: {name}\n"
+    f"Age: {age}\n"
+    f"Price: {price:.2f}"
+)
+print(msg)
