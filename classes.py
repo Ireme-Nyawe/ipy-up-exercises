@@ -63,3 +63,22 @@ try:
     Dog("Ghost", -1)
 except ValueError as e:
     print("Error:", e)          # Error: age cannot be negative
+
+
+
+class Puppy(Dog):
+    def __init__(self, name, age, toy):
+        super().__init__(name, age)  # reuse the parent's setup
+        self.toy = toy
+
+    def bark(self):  # overrides Dog.bark
+        return f"{self.name} says yip yip!"
+
+    def play(self):
+        return f"{self.name} plays with {self.toy}"
+
+
+pup = Puppy("Biscuit", 1, "ball")
+print(pup.bark())                    # Biscuit says yip yip!
+print(pup.play())                    # Biscuit plays with ball
+print(isinstance(pup, Dog))          # True
