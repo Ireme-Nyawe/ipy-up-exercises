@@ -33,3 +33,33 @@ print(rex.bark())   # Rex says woof!
 rex.birthday()
 print(rex)          # Dog(name=Rex, age=4)
 
+
+class Dog:  # noqa: F811
+    species = "Canis familiaris"  # shared by all dogs (class attribute)
+
+    def __init__(self, name, age):
+        self.name = name        # unique per dog (instance attribute)
+        self.age = age          # goes through the setter below
+
+    @property
+    def age(self):
+        return self._age
+
+    @age.setter
+    def age(self, value):
+        if value < 0:
+            raise ValueError("age cannot be negative")
+        self._age = value
+
+    def bark(self):
+        return f"{self.name} says woof!"
+
+    def __str__(self):
+        return f"Dog(name={self.name}, age={self.age})"
+
+
+print(Dog.species)              # Canis familiaris
+try:
+    Dog("Ghost", -1)
+except ValueError as e:
+    print("Error:", e)          # Error: age cannot be negative
