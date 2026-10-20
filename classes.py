@@ -105,3 +105,21 @@ class Barbarian(Human):
 warrior = Warrior(10,20);
 warrior.attack()
 print(warrior.health)
+
+#Inhertance simple exercise
+class Entity:
+    def attack(self):
+        print(f"attack with damage {self.damage}")
+
+class Moster(Entity):
+    def __init__(self,damage,health):
+        self.damage = damage
+        self.health = health
+    def __repr__(self):
+        return f"Monster(damage={self.damage}, health={self.health})"
+
+monster = Moster(10,20)
+print(monster.damage)
+print(monster.health)
+print(monster)
+monster.attack()
