@@ -1,0 +1,11 @@
+<h2>Simple Calculator</h2>
+
+<form method="POST">
+    {% csrf_token %}
+
+    <input type="number" step="any" name="num1" placeholder="First number" required>
+
+    <input type="number" step="any" name="num2" placeholder="Second number" required>
+
+    <button type="submit">Add Numbers</button>
+</form>
