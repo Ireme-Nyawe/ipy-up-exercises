@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My To-Do List</title>
+</head>
+
+<body>
+
+    <h1>My To-Do List</h1>
+
+    <h3>Total Tasks: {{ total }}</h3>
+
+    <!-- Add Task Form -->
+    <form method="POST">
+        {% csrf_token %}
+
+        <input
+            type="text"
+            name="task"
+            placeholder="Enter a new task"
+            required
+        >
+
+        <button type="submit" name="add_task">
+            Add Task
+        </button>
+    </form>
+
+    <hr>
+
+    <!-- Display Tasks -->
+    <h2>My Tasks</h2>
+
+    {% if tasks %}
+
+        <ul>
+            {% for task in tasks %}
+
+                <li>
+                    {{ task }}
+
+                    <form method="POST" style="display:inline;">
+                        {% csrf_token %}
+
+                        <button
+                            type="submit"
+                            name="delete_task"
+                            value="{{ forloop.counter0 }}"
+                        >
+                            Delete
+                        </button>
+                    </form>
+                </li>
+
+            {% endfor %}
+        </ul>
+
+    {% else %}
+
+        <p>No tasks available. Add your first task!</p>
+
+    {% endif %}
+
+</body>
+</html>
