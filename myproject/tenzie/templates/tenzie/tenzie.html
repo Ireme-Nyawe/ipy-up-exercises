@@ -1,0 +1,170 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tenzi Dice Game</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f1f5f9;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            max-width: 600px;
+            margin: auto;
+            border-radius: 12px;
+        }
+
+        .dice-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 30px 0;
+        }
+
+        .die {
+            width: 55px;
+            height: 55px;
+            border: 2px solid #64748b;
+            border-radius: 10px;
+            background: white;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        .held {
+            background: #86efac;
+            border-color: #16a34a;
+        }
+
+        button.roll {
+            background: #2563eb;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #message {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🎲 Tenzi Dice Game</h1>
+
+    <p>Roll all 10 dice until they show the same number!</p>
+
+    <div class="dice-container" id="diceContainer"></div>
+
+    <button class="roll" onclick="rollDice()">
+        Roll Dice
+    </button>
+
+    <p id="message">Choose a number and start rolling!</p>
+
+    <p>Rolls: <span id="rollCount">0</span></p>
+
+    <button onclick="resetGame()">New Game</button>
+
+</div>
+
+<script>
+    let dice = [];
+    let rolls = 0;
+
+    function startGame() {
+        dice = Array.from({ length: 10 }, () => ({
+            value: Math.floor(Math.random() * 6) + 1,
+            held: false
+        }));
+
+        rolls = 0;
+        renderDice();
+        updateRollCount();
+
+        document.getElementById("message").textContent =
+            "Click Roll Dice to begin!";
+    }
+
+    function renderDice() {
+        const container = document.getElementById("diceContainer");
+
+        container.innerHTML = "";
+
+        dice.forEach((die, index) => {
+            const button = document.createElement("button");
+
+            button.className = "die" + (die.held ? " held" : "");
+            button.textContent = die.value;
+
+            button.onclick = () => holdDie(index);
+
+            container.appendChild(button);
+        });
+    }
+
+    function holdDie(index) {
+        if (dice.every(die => die.held)) return;
+
+        dice[index].held = !dice[index].held;
+        renderDice();
+    }
+
+    function rollDice() {
+        if (dice.every(die => die.held)) return;
+
+        dice.forEach(die => {
+            if (!die.held) {
+                die.value = Math.floor(Math.random() * 6) + 1;
+            }
+        });
+
+        rolls++;
+        renderDice();
+        updateRollCount();
+        checkWinner();
+    }
+
+    function checkWinner() {
+        const firstValue = dice[0].value;
+
+        const won = dice.every(die => die.value === firstValue);
+
+        if (won) {
+            document.getElementById("message").textContent =
+                "🎉 Congratulations! You won in " + rolls + " rolls!";
+        } else {
+            document.getElementById("message").textContent =
+                "Keep going! Hold the dice you want to keep.";
+        }
+    }
+
+    function updateRollCount() {
+        document.getElementById("rollCount").textContent = rolls;
+    }
+
+    function resetGame() {
+        startGame();
+    }
+
+    startGame();
+</script>
+
+</body>
+</html>
