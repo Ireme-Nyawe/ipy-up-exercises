@@ -22,4 +22,5 @@ urlpatterns = [
      path('greet/', include('greetings.urls')),
      path('calculator/', include('calculator.urls')),
     path('todo/', include('todo.urls')),
+    path('tenzie/', include('tenzie.urls')),
 ]
