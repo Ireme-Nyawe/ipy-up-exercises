@@ -21,3 +21,12 @@ print(check_number(10))
 print(check_number(7))
 print(check_number(24))
 print(check_number(15))
+
+# Create a lambda function to multiply every numberof list with2
+numbers = [1, 2, 3, 4, 5]
+
+# Apply lambda to every number
+result = map(lambda x: x * 2, numbers)
+
+# Convert the result into a list
+print(list(result))
