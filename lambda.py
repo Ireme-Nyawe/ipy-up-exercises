@@ -30,3 +30,11 @@ result = map(lambda x: x * 2, numbers)
 
 # Convert the result into a list
 print(list(result))
+
+#Get only even numbers
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+# Select only even numbers
+result = filter(lambda x: x % 2 == 0, numbers)
+
+print(list(result))
